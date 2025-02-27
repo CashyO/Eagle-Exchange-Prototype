@@ -1,0 +1,16 @@
+# Ensure all text files use LF in the repository
+* text=auto
+
+# Force LF for code files
+*.py text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.md text eol=lf
+
+# Keep Windows batch scripts as CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
