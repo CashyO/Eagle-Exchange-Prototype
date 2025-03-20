@@ -1,3 +1,10 @@
 Ayooo
 
-Testing git function 
+Notes:
+- Backend Language is Python
+- Backend Framework is Django 
+- MUST create a virtual environment in the backend to download/install
+  all the required packages/libraries 
+
+How To's:
+- 

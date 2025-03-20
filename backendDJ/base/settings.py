@@ -29,7 +29,8 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+    # List of installed apps in the project
+    # The order of the apps in the list is important
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,14 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',                                              # Connecting the frontend, React, to the backend, Django
-    'api',                                                      # The app that contains the APIs for the project       
+    'corsheaders',                  # Synced CORS headers to the project (connects the frontend to the backend)
+    'api',                          # Synced API app to the project  (A folder that contains the APIs for the full stack project)       
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',                    # Connecting the frontend, React, to the backend, Django
+    'corsheaders.middleware.CorsMiddleware',                    # Synced CORS middleware to the project
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -53,8 +54,14 @@ MIDDLEWARE = [
 ]
 
 # Approved list of domains that can make requests to the backend
+# A whitelist of origins that are authiruzed ti make cross-site HTTP requests
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',                                    # Vite React frontend port
+    'http://localhost:5173',             # Frontend URL (ViteReact)
+    # Troubleshooting (because of the port number may change)
+    'http://localhost:5174',
+    'http://localhost:5175',
+    'http://localhost:5176',
+    'http://localhost:5177',
 ]
 
 ROOT_URLCONF = 'base.urls'
