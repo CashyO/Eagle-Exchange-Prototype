@@ -4,10 +4,12 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from "react-router";
 
+// Designing the Frontend features
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>       {/* Wrapping the App with Router library*/}
+    {/*Wrapping the App with React Router library*/}
+    <BrowserRouter>      
         <App />
     </BrowserRouter>
   </StrictMode>,

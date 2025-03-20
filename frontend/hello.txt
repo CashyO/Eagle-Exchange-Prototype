@@ -1,0 +1,7 @@
+Ayo 
+
+Notes: 
+- Frontend Main Language is JavaScript .jsx files 
+- Frontend Framework is Vite-React 
+- MUST have JavaScript Node.js installed to do npm commands
+

@@ -5,6 +5,5 @@ Notes:
 - Backend Framework is Django 
 - MUST create a virtual environment in the backend to download/install
   all the required packages/libraries 
+- MUST have python installed to do python/pip commands
 
-How To's:
-- 
