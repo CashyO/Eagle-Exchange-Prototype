@@ -64,6 +64,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5177',
 ]
 
+AUTH_USER_MODEL = 'api.CustomUser' # Custom User Model
+
 ROOT_URLCONF = 'base.urls'
 
 TEMPLATES = [

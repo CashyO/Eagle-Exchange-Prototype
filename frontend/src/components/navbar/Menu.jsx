@@ -5,12 +5,16 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import DashboardIcon from '@mui/icons-material/Dashboard';
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import {Link, useLocation} from 'react-router'
+import {Link, useLocation} from 'react-router';
+//Import Icons
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import MailIcon from '@mui/icons-material/Mail';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 // Designing the Menu Feature of the Project
 
@@ -96,7 +100,44 @@ export default function Menu() {
         <ListItemText primary="Create Listing" />
     </ListItemButton>
     
+    
+    {/*My Account Section*/}
+    <List
+      sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+      component="nav"
+      aria-labelledby="nested-list-subheader"
+      subheader={
+        <ListSubheader component="div" id="nested-list-subheader">
+            My Account
+        </ListSubheader>
+      }
+    >  
     </List>
+
+    {/*The Profile Information button (assigning a link to the button)*/}
+    <ListItemButton sx={{ pl: 4 }}  component={Link} to="/profile" selected={path === "/profile"}>
+    <ListItemIcon>
+          <AccountCircleIcon />
+        </ListItemIcon>
+        <ListItemText primary="Profile Information" />
+    </ListItemButton>
+    {/*The Messages button (assigning a link to the button)*/}
+    <ListItemButton sx={{ pl: 4 }}  component={Link} to="/messages" selected={path === "/messages"}>
+      <ListItemIcon>
+          <MailIcon />
+      </ListItemIcon>
+      <ListItemText primary="Messages" />
+    </ListItemButton>
+    {/*The Set Up Notifications button (assigning a link to the button)*/}
+    <ListItemButton sx={{ pl: 4 }}  component={Link} to="/notification" selected={path === "/notification"}>
+      <ListItemIcon>
+          <SettingsIcon />
+      </ListItemIcon>
+      <ListItemText primary="Set Up Notifications" />
+    </ListItemButton>
+
+    </List>
+
 
     </>
   );
