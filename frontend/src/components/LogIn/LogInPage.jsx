@@ -43,7 +43,7 @@ export default function Login () {
 
             <Button sx={{ mt: 1 }} onClick={() => navigate("/")}>Log in</Button>
             <Typography
-              endDecorator={<Link href="/newaccount">Sign up</Link>}
+              endDecorator={<Link href="/verification">Sign up</Link>}
               sx={{ fontSize: 'sm', alignSelf: 'center' }}>
               Don&apos;t have an account?
             </Typography>

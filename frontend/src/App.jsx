@@ -14,13 +14,12 @@ import Delete from './components/Delete'
 import Favorites from './components/Favorites'
 import Notification from './components/Notification'
 import Profile from './components/Profile'
+import Messages from './components/Messages'
 // importing the LogIn/SignUp pages
 import TemplateLogIn from './components/LogIn/TemplateLogIn'
 import LogInPage from './components/LogIn/LogInPage'
-import NewAccountEmail from './components/LogIn/NewAccountEmail'
 import Verification from './components/LogIn/Verification'
 import Information from './components/LogIn/Information'
-import Messages from './components/Messages'
 
 
 // Designing the App features
@@ -57,7 +56,6 @@ function App() {
         <Routes>
           <Route path="/verification" element={<Verification />} />
           <Route path="/login" element={<LogInPage />} />
-          <Route path="/newaccount" element={<NewAccountEmail />} />
           <Route path="/information" element={<Information />} />
         </Routes>
       }/>

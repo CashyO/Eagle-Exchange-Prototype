@@ -37,15 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'rest_framework',
+    'knox',
     'django.contrib.staticfiles',
     'corsheaders',                  # Synced CORS headers to the project (connects the frontend to the backend)
-    'api',                          # Synced API app to the project  (A folder that contains the APIs for the full stack project)       
+    'api',                          # Synced API app to the project  (A folder that contains the APIs for the full stack project)
+    'django_email', 
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',                    # Synced CORS middleware to the project ase URL is not the same in the frontend and in the backend
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',                    # Synced CORS middleware to the project
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -55,17 +58,28 @@ MIDDLEWARE = [
 
 # Approved list of domains that can make requests to the backend
 # A whitelist of origins that are authiruzed ti make cross-site HTTP requests
+CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',             # Frontend URL (ViteReact)
     # Troubleshooting (because of the port number may change)
-    'http://localhost:5174',
-    'http://localhost:5175',
-    'http://localhost:5176',
-    'http://localhost:5177',
+    
 ]
+CSRF_TRUSTED_ORIGINS = ['http://localhost:5173']  # Added CSRF trusted origins
+
+# Session settings
+SESSION_COOKIE_SAMESITE = 'None'  # Set to 'None' if test from frontend, set to 'Lax' if test from backend
+SESSION_COOKIE_SECURE = True # Set to True if test fromfrontend, set to False if test frombackend
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_AGE = 3600
+SESSION_SAVE_EVERY_REQUEST = True  # Added to save session on each request
+
+# CSRF settings to match session settings
+CSRF_COOKIE_SAMESITE = 'None'  # Set to 'None' if test from frontend, set to 'Lax' if test from backend
+CSRF_COOKIE_SECURE = True # Set to True if test fromfrontend, set to False if test frombackend
+CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript to read CSRF token
+
 
 AUTH_USER_MODEL = 'api.CustomUser' # Custom User Model
-
 ROOT_URLCONF = 'base.urls'
 
 TEMPLATES = [
@@ -138,3 +152,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For testing - emails print to console
+EMAIL_HOST = 'smtp.gmail.com'  # Your SMTP server
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'eagleexchange03@gmail.com'  # Your email
+EMAIL_HOST_PASSWORD = 'shpimnmzhrtewewd'  # App password (not regular password)
+DEFAULT_FROM_EMAIL = 'eagleexchange03@gmail.com'  # Your email
