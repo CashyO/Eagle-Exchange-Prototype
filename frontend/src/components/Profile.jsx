@@ -6,6 +6,7 @@ import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import { Box } from '@mui/material';
+import AxiosInstance from './AxiosInstance';
 
 
 
@@ -13,6 +14,14 @@ import { Box } from '@mui/material';
 export default function Profile() {
 
   const navigate = useNavigate();//variable navigate to acces the main page when the user clicks on LogIn button
+  const logoutUser = () =>{
+    AxiosInstance.post(`logoutall/`,{
+    })
+    .then( () => {
+       localStorage.removeItem("token")
+       navigate('/')
+    }
+    )}
 
   return (
     <>
@@ -65,8 +74,8 @@ export default function Profile() {
           </FormControl>
             <Button sx={{ mt: 3 }} onClick={() => navigate("/")}>Update</Button>
             <Button sx={{ mt: -1 }} onClick={() => navigate("/")}>Cancel</Button>
-            <Button sx={{ mt: -1 }} onClick={() => navigate("/login")}>Log Out</Button>
-         
+            <Button sx={{ mt: -1 }} onClick={logoutUser}>Log Out</Button>
+          
 
         </Box>
           

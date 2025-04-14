@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,6 +81,8 @@ CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript to read CSRF token
 
 
 AUTH_USER_MODEL = 'api.CustomUser' # Custom User Model
+AUTHENTICATION_BACKENDS = ["django.contrib.auth.backends.ModelBackend",] # Use this function to auth instead of the default one
+
 ROOT_URLCONF = 'base.urls'
 
 TEMPLATES = [
@@ -99,6 +102,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'base.wsgi.application'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
 
 
 # Database
@@ -163,3 +170,9 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'eagleexchange03@gmail.com'  # Your email
 EMAIL_HOST_PASSWORD = 'shpimnmzhrtewewd'  # App password (not regular password)
 DEFAULT_FROM_EMAIL = 'eagleexchange03@gmail.com'  # Your email
+
+
+REST_KNOX = {
+    'TOKEN_TTL': timedelta(minutes=1),  # Set your desired expiration time
+    'AUTO_REFRESH': False,  # Whether tokens should auto-refresh when near expiration
+}

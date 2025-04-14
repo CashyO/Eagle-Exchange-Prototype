@@ -19,3 +19,13 @@ class RegisterSerializer(serializers.ModelSerializer):
         #call the functions create_user that is in the models.py so we can create a CustomUser
         user = User.objects.create_user(**validated_data)
         return user
+    
+#Serializer to deal with the authentification during the login
+class LoginSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField()
+
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        ret.pop('password', None)#We do this to make sure the password is not visible
+        return ret

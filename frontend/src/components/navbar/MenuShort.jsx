@@ -10,6 +10,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import SettingsIcon from '@mui/icons-material/Settings';
 
+
 // Designing the Compact Menu feature for the project
 
 export default function MenuShort() {
@@ -58,7 +59,8 @@ export default function MenuShort() {
             <SettingsIcon />
         </ListItemIcon>
       </ListItemButton>
-     
+
+  
     </List>
 
     </>

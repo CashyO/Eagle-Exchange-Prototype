@@ -1,20 +1,20 @@
+# Create your views here.
+# views are used to handle HTTP requests and return HTTP responses
+#create function to delete, create, retrieve..  Users or others models
 from django.shortcuts import render
 from rest_framework import viewsets, permissions 
 from .serializers import * 
 from .models import * 
 from rest_framework.response import Response 
-from django.contrib.auth import get_user_model
-User= get_user_model()
-# Create your views here.
-# views are used to handle HTTP requests and return HTTP responses
-#create function to delete, create, retrieve..  Users or others models
-
+from django.contrib.auth import get_user_model, authenticate #authenticate is the function we create un auth_backend.py
 from django.core.mail import send_mail
 from django.conf import settings
 from rest_framework.decorators import action
 import random
+from knox.models import AuthToken
+User= get_user_model()
 
-# View RegisterViewset is used to register new users
+# View RegisterViewset is used to register/signup new users
 class RegisterViewset(viewsets.ViewSet):
     permission_classes = [permissions.AllowAny]
     queryset = User.objects.all()
@@ -34,6 +34,19 @@ class RegisterViewset(viewsets.ViewSet):
         return Response(serializer.data)
 
 
+class UserViewset(viewsets.ViewSet):
+    permission_classes = [permissions.AllowAny]
+    queryset = User.objects.all()
+    serializer_class = RegisterSerializer
+
+    def list(self,request):
+        queryset = User.objects.all()
+        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data)
+
+
+
+
 # View VerificationEmailViewset is used to verify email
 def validateEmail(email):
     #Make sure the email is and ERAU email
@@ -48,11 +61,11 @@ class VerificationEmailViewset(viewsets.ViewSet):
 
     def create(self, request):
         action = request.data.get('action')
+        email = request.data.get('email')
+        validateEmail(email)
 
         if action == 'send':
-            email = request.data.get('email')
-            validateEmail(email)
-
+            
             if not email:
                 return Response({'error': 'Email is required'}, status=400)
                 
@@ -82,14 +95,15 @@ class VerificationEmailViewset(viewsets.ViewSet):
             print("Code:", request.session.get('code'))
 
             code = request.data.get('code')
+            email = request.data.get('email')
 
             session_code = request.session.get('code')
             session_email = request.session.get('email')
             
-            if not session_code or not session_email:
+            if not session_code or not email:
                 return Response({'error': 'Not Code or Email in the session'}, status=400)
 
-            if (session_code == code):
+            if (session_code == code and session_email == email):
                 return Response({'message': 'Verification successful'})  
             else:
                 return Response({'error': 'Wrong code'}, status=400)
@@ -100,3 +114,30 @@ class VerificationEmailViewset(viewsets.ViewSet):
         code = request.session.get('code')
         return Response({'session_email': email,'session_code': code})
 
+
+# View LoginViewset is used to login the users
+class LoginViewset(viewsets.ViewSet):
+    permission_classes = [permissions.AllowAny]
+    serializer_class = LoginSerializer #Use the serializer we cretae for the logIn
+
+    def create(self, request): 
+        serializer = self.serializer_class(data=request.data) #Define the serializer with the request data
+        
+        if serializer.is_valid():#Check if the serializer is valid
+            email = serializer.validated_data['email']
+            password = serializer.validated_data['password']
+            user = authenticate(request, email=email, password=password) #authenticate is the function we create un auth_backend.py
+            
+            #Create, define and return to the frontend the tokens if user exist
+            if user: 
+                _, token = AuthToken.objects.create(user)
+                return Response(
+                    {
+                        "user": self.serializer_class(user).data,
+                        "token": token
+                    }
+                )
+            else: 
+                return Response({"error":"Invalid credentials"} , status=401)  
+        else: 
+            return Response(serializer.errors,status=400)

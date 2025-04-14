@@ -27,6 +27,8 @@ export default function Info() {
       const emailFromState = location.state?.email;
       if (emailFromState) {
         setEmail(emailFromState);
+        setValue("email", emailFromState); // Explicitly set form value
+
       } else {
         console.log("No email found in state.");
       }
@@ -37,6 +39,8 @@ export default function Info() {
       register,
       handleSubmit,
       formState: { errors },
+      setValue,
+      setError,
     } = useForm();
 
     const onSubmit = async (data) => {
@@ -51,10 +55,18 @@ export default function Info() {
           password: data.password,
         });
         console.log("Server response:", response.data);
-        navigate(`/`)
+        navigate(`/login`)
 
       } catch (error) {
         console.error("Submission error:", error.response?.data || error.message);
+        const errorData = error.response?.data;
+        const status = error.response?.status;
+        if ((errorData?.email) || (status === 400)) {
+          setError("email", {
+            type: "manual",
+            message: "user with this email already exists.", // shows the error under the email input
+          });
+        }
       }
     };
 
@@ -77,11 +89,10 @@ export default function Info() {
             <Input
               type="email"
               placeholder="email"
-              value={email} // Set the email value
-              {...register("email", {required: true})}
-              readOnly // Make the email field read-only since it's pre-filled
+              readOnly// Make the email field read-only since it's pre-filled
+              {...register("email", { required: true })}
             />
-            {errors.email && <span>This email is already assigned to an user, sign-up with a different email</span>}
+            {errors.email && <span>{errors.email.message}</span>}
           </FormControl>
           
           
@@ -116,7 +127,7 @@ export default function Info() {
           </FormControl>
 
             <Button sx={{ mt: 1 }} type={"submit"}>
-                Create Account
+                Create Account And Go To Log In
             </Button>
         </form>
     </>
