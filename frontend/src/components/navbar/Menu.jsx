@@ -144,9 +144,45 @@ export default function Menu() {
         <ListItemIcon>
             <MailIcon />
         </ListItemIcon>
-        <ListItemText primary="Chat" />
+        <ListItemText primary="Create Listing" />
     </ListItemButton>
     
+    
+    {/*My Account Section*/}
+    <List
+      sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+      component="nav"
+      aria-labelledby="nested-list-subheader"
+      subheader={
+        <ListSubheader component="div" id="nested-list-subheader">
+            My Account
+        </ListSubheader>
+      }
+    >  
+    </List>
+
+    {/*The Profile Information button (assigning a link to the button)*/}
+    <ListItemButton sx={{ pl: 4 }}  component={Link} to="/profile" selected={path === "/profile"}>
+    <ListItemIcon>
+          <AccountCircleIcon />
+        </ListItemIcon>
+        <ListItemText primary="Profile Information" />
+    </ListItemButton>
+    {/*The Messages button (assigning a link to the button)*/}
+    <ListItemButton sx={{ pl: 4 }}  component={Link} to="/messages" selected={path === "/messages"}>
+      <ListItemIcon>
+          <MailIcon />
+      </ListItemIcon>
+      <ListItemText primary="Messages" />
+    </ListItemButton>
+    {/*The Notifications button (assigning a link to the button)*/}
+    <ListItemButton sx={{ pl: 4 }}  component={Link} to="/notification" selected={path === "/notification"}>
+      <ListItemIcon>
+          <SettingsIcon />
+      </ListItemIcon>
+      <ListItemText primary="Notifications" />
+    </ListItemButton>
+
     </List>
 
     </>
