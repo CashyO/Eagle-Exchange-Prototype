@@ -19,6 +19,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         #call the functions create_user that is in the models.py so we can create a CustomUser
         user = User.objects.create_user(**validated_data)
         return user
+
     
 #Serializer to deal with the authentification during the login
 class LoginSerializer(serializers.Serializer):
@@ -29,3 +30,29 @@ class LoginSerializer(serializers.Serializer):
         ret = super().to_representation(instance)
         ret.pop('password', None)#We do this to make sure the password is not visible
         return ret
+
+
+class PriceTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PriceType
+        fields = ('id', 'name')
+
+class CharacteristicSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Characteristic
+        fields = ('id', 'name')
+
+class UserListingSerializer(serializers.ModelSerializer):
+
+    # Foreign Key Id - to pull the titles of the Id
+    priceType_details = PriceTypeSerializer(source='priceType', read_only=True)
+    characteristics_names = serializers.SerializerMethodField()
+
+    class Meta:
+        model = UserListing
+        fields = "__all__"  # If you want to bring only certain types of data change this to like something below 
+        # fields = ['id', 'name', 'description', 'price', 'priceType', 'characteristic', 'created', 'updated']
+
+    def get_characteristics_names(self, obj):
+        return [char.name for char in obj.characteristic.all()]
+

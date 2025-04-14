@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'rest_framework',
+    'rest_framework',               # Synced Django REST framework to the project
     'knox',
     'django.contrib.staticfiles',
     'corsheaders',                  # Synced CORS headers to the project (connects the frontend to the backend)

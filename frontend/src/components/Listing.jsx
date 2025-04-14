@@ -35,7 +35,7 @@ import { useNavigate, useParams } from 'react-router';
 // To incorperate new tables add a new state variable and a new API call in the GetData function:
 
 
-const Edit = () => {
+const Listing = () => {
 
     const MyParameter = useParams()
     const MyId = MyParameter.id
@@ -77,6 +77,7 @@ const Edit = () => {
                     setMyData(res.data)
                 })
         }
+
 
     // 3. Trigger the API call using the useEffect hook when the component mounts
     useEffect(() => 
@@ -120,30 +121,11 @@ const Edit = () => {
         validationSchema: validationSchema, 
 
         // Creating a function to submit data to the backend
-        // Do not forget the backslash '/'
-        onSubmit: (values) => {
-            AxiosInstance.put(`userListing/${MyId}/`, values)
-            .then(() =>
-                {
-                    console.log("Successful data submission")
-                    
-                    setMessage(
-                        // The pop up message 
-                        <MyMessage
-                            messageText={"You succesfully updated data to the database!"}
-                            messageColor={"green"}
-                        />
-                    )
-                    setTimeout(() =>
-                        {
-                            // The web page onSubmit directs to after succesful upload
-                            navigate('/userlistings')
-                            // The time till is execute command 1.5 seconds
-                        }, 1500)
-                })
+        onSubmit: () => {
+            navigate('/messages')
             .catch((error) => 
                 {
-                console.error('Error submitting data:', error);
+                console.error('Error navigating to web page:', error);
                 });
         }
     })
@@ -161,7 +143,7 @@ const Edit = () => {
 
                 <AddBoxIcon sx={{ marginRight: '8px' }} /> 
                 <Typography sx={{ fontWeight: 'bold' }} variant='subtitle2'>
-                    Edit a  listing!
+                    Exchange Listing!
                 </Typography>
             </Box>
 
@@ -176,7 +158,7 @@ const Edit = () => {
                     {/**/}
                     <Box sx={{ marginTop: '16px', display: 'flex', justifyContent: 'center' }}>
                     <Button type="submit" variant="contained" fullWidth color="primary">
-                        Submit the Data
+                        Message
                     </Button>
                     </Box>
                     
@@ -189,10 +171,12 @@ const Edit = () => {
                         label={"Listing Title"}
                         name='name'
                         value={formik.values.name}
-                        onChange={formik.handleChange}
+                        //onChange={formik.handleChange}    // Disabled so the forms stay locked 
                         onBlur={formik.handleBlur}
                         error={formik.touched.name && Boolean(formik.errors.name)}
                         helperText={formik.touched.name && formik.errors.name} 
+                        disabled // Read-only form
+                        inputProps={{readOnly: true}} // Read-only form
                     />
 
                     <Box sx={{ marginTop: '16px' }}>
@@ -201,10 +185,12 @@ const Edit = () => {
                         options={priceType}
                         name='priceType'
                         value={formik.values.priceType}
-                        onChange={formik.handleChange}
+                        //onChange={formik.handleChange}    // Disabled so the forms stay locked 
                         onBlur={formik.handleBlur}
                         error={formik.touched.priceType && Boolean(formik.errors.priceType)}
                         helperText={formik.touched.priceType && formik.errors.priceType}
+                        disabled // Read-only form
+                        inputProps={{readOnly: true}} // Read-only form
                     />
                     </Box>
 
@@ -213,10 +199,12 @@ const Edit = () => {
                         label={"Price"}
                         name='price'
                         value={formik.values.price}
-                        onChange={formik.handleChange}
+                        //onChange={formik.handleChange}    // Disabled so the forms stay locked 
                         onBlur={formik.handleBlur}
                         error={formik.touched.price && Boolean(formik.errors.price)}
                         helperText={formik.touched.price && formik.errors.price}
+                        disabled // Read-only form
+                        inputProps={{readOnly: true}} // Read-only form
                     />
                     </Box>
 
@@ -229,10 +217,12 @@ const Edit = () => {
                         rows={4}
                         name='description'
                         value={formik.values.description}
-                        onChange={formik.handleChange}
+                        //onChange={formik.handleChange}    // Disabled so the forms stay locked 
                         onBlur={formik.handleBlur}
                         error={formik.touched.description && Boolean(formik.errors.description)}
                         helperText={formik.touched.description && formik.errors.description}
+                        disabled // Read-only form
+                        inputProps={{readOnly: true}} // Read-only form
                     />
 
                     <Box sx={{ marginTop: '16px' }}>
@@ -241,10 +231,12 @@ const Edit = () => {
                         options={characteristic}
                         name='characteristic'
                         value={formik.values.characteristic}
-                        onChange={formik.handleChange}
+                        //onChange={formik.handleChange}    // Disabled so the forms stay locked 
                         onBlur={formik.handleBlur}
                         error={formik.touched.characteristic && Boolean(formik.errors.characteristic)}
                         helperText={formik.touched.characteristic && formik.errors.characteristic}
+                        disabled // Read-only form
+                        inputProps={{readOnly: true}} // Read-only form
                     />
                     </Box>
                 
@@ -257,4 +249,4 @@ const Edit = () => {
     )
 }
 
-export default Edit
+export default Listing

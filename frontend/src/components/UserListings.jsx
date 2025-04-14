@@ -6,15 +6,13 @@ import {Box, Chip, IconButton, Typography} from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CalendarViewMonthIcon from '@mui/icons-material/CalendarViewMonth';
-import InfoIcon from '@mui/icons-material/Info';
 // Importing Material React Table components
 import {MaterialReactTable} from 'material-react-table';
 // Fetching Data APIs Axios
 import AxiosInstance from './AxiosInstance';
-import Listing from './Listing';
 
 // JavaScript Function 
-const Landing = () => {
+const UserListings = () => {
 
   // To store the data we pull with the API
   const [myData, setMyData] = useState([])
@@ -87,7 +85,7 @@ const Landing = () => {
       <Box className={"TopBar"} sx={{display:'flex', alignItems:'center'}}>
         <CalendarViewMonthIcon />
         <Typography sx={{marginLeft: '15px', fontWeight:'bold'}} variant='subtitle2'> 
-          The Exchange!
+          View Your Listings!
         </Typography> 
       </Box>
 
@@ -99,12 +97,12 @@ const Landing = () => {
           <Box sx={{display: 'flex', flexWrap: 'nowrap', gap: '8px'}}>
             {/*Don't forget the "/" before the parameterized urls because
              that is how it is declared in the app.jsx*/}
-            {/*Going to delete the buttons: edit & delete
-                add a inspect button (create another parameterized page but just to view the specific listing) 
-                                     (basically copy and paste edit.jsx but take away the functionality)
-                add a message button (message other dude is going to do this) */}
-            <IconButton color="primary" component={Link} to={`/listing/${row.original.id}`}>
-              <InfoIcon/>
+            <IconButton color="primary" component={Link} to={`/edit/${row.original.id}`}>
+              <EditIcon/>
+            </IconButton>
+
+            <IconButton color="error" component={Link} to={`/delete/${row.original.id}`}>
+              <DeleteIcon/>
             </IconButton>
 
           </Box>
@@ -115,4 +113,4 @@ const Landing = () => {
   )
 }
 
-export default Landing
+export default UserListings

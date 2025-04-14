@@ -8,9 +8,11 @@ import ProtectedRoute from './components/ProtectedRoutes'
 import Navbar from './components/navbar/Navbar'
 import Landing from './components/Landing'
 import Dashboard from './components/Dashboard'
+import UserListings from './components/UserListings'
 import Create from './components/Create'
 import Edit from './components/Edit'
 import Delete from './components/Delete'
+import Listing from './components/Listing'
 import Favorites from './components/Favorites'
 import Notification from './components/Notification'
 import Profile from './components/Profile'
@@ -27,7 +29,17 @@ import Information from './components/LogIn/Information'
 function App() {
   const location = useLocation();
 
-  if (location.pathname === "/" ||location.pathname === '/dashboard' ||location.pathname === '/messages' ||location.pathname === '/profile' ||location.pathname === '/notification' ||location.pathname === '/favorites' || location.pathname === '/create' || location.pathname === '/edit/:id' || location.pathname === '/delete/:id') {
+  if (location.pathname === "/" 
+    ||location.pathname === '/dashboard' 
+    ||location.pathname === '/messages' 
+    ||location.pathname === '/profile' 
+    ||location.pathname === '/notification' 
+    ||location.pathname === '/favorites' 
+    ||location.pathname === '/create' 
+    ||location.pathname === '/edit/:id' 
+    ||location.pathname === '/delete/:id'
+    ||location.pathname === '/listing/:id'
+    ||location.pathname === '/userlistings') {
     return (
       <>
         <Navbar

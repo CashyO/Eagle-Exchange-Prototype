@@ -8,6 +8,9 @@ router.register('information', RegisterViewset, basename='information')
 router.register('users', UserViewset, basename='users')
 router.register('verification', VerificationEmailViewset, basename='verification')
 router.register('login', LoginViewset, basename='login')
-
+router.register(r'priceType', PriceTypeViewSet, basename='priceType')
+router.register(r'characteristic', CharacteristicViewSets, basename='characteristic')
+router.register(r'userListing', UserListingViewSets, basename='userListing')
+# The router automatically generates the URL conf for the viewsets
 
 urlpatterns = router.urls
