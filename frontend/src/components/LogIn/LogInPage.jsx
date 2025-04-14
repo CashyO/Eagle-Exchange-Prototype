@@ -89,7 +89,7 @@ export default function Login () {
             <Typography
               endDecorator={<Link href="/verification">Sign up</Link>}
               sx={{ fontSize: 'sm', alignSelf: 'center' }}>
-              Don&apos;t have an account?
+              Don't have an account?
             </Typography>
 
       </form>
