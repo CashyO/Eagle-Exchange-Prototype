@@ -37,7 +37,7 @@ export default function Login () {
               // html input attribute
               name="password"
               type="password"
-              placeholder="password"
+              placeholder="Password"
             />
             </FormControl>
 
@@ -45,7 +45,7 @@ export default function Login () {
             <Typography
               endDecorator={<Link href="/verification">Sign up</Link>}
               sx={{ fontSize: 'sm', alignSelf: 'center' }}>
-              Don&apos;t have an account?
+              Don't have an account?
             </Typography>
 
     </>

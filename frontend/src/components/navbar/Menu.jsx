@@ -128,16 +128,15 @@ export default function Menu() {
       </ListItemIcon>
       <ListItemText primary="Messages" />
     </ListItemButton>
-    {/*The Set Up Notifications button (assigning a link to the button)*/}
+    {/*The Notifications button (assigning a link to the button)*/}
     <ListItemButton sx={{ pl: 4 }}  component={Link} to="/notification" selected={path === "/notification"}>
       <ListItemIcon>
           <SettingsIcon />
       </ListItemIcon>
-      <ListItemText primary="Set Up Notifications" />
+      <ListItemText primary="Notifications" />
     </ListItemButton>
 
     </List>
-
 
     </>
   );
