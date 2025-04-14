@@ -81,7 +81,7 @@ export default function Info() {
               {...register("email", {required: true})}
               readOnly // Make the email field read-only since it's pre-filled
             />
-            {errors.email && <span>This email is already assigned to an user, sign-up with a different email</span>}
+            {errors.email && <span>This email is already in use. Please use a different email</span>}
           </FormControl>
           
           
