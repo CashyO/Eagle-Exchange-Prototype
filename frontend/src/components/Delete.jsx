@@ -9,7 +9,7 @@ import MyMessage from './forms/Message'; // temporary message form for testing
 import UploadForm from './forms/UploadForm'; // temporary upload form for testing 
 import BasicCardForm from './forms/BasicCardForm'; // temporary card form for testing
 // importing react-router for navigation
-import { useNavigate, useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router-dom';
 
 // The Create Page Component:
 // - This component is responsible for creating a new listing

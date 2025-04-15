@@ -15,7 +15,7 @@ import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import {Link, useLocation} from 'react-router'
+import {Link, useLocation} from 'react-router-dom'
 
 
 export default function Menu() {

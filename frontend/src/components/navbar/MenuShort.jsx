@@ -6,7 +6,7 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import AccountBoxIcon from '@mui/icons-material/AccountBox'; 
 import MailIcon from '@mui/icons-material/Mail';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import {Link, useLocation} from 'react-router'
+import {Link, useLocation} from 'react-router-dom'
 
 
 export default function MenuShort() {
@@ -38,7 +38,7 @@ export default function MenuShort() {
         </ListItemIcon>
       </ListItemButton>
 
-      <ListItemButton component={Link} to="/chatpage" selected={path === "/chatpage"} sx={{display:'flex', justifyContent:'center'}}>
+      <ListItemButton component={Link} to="/messages" selected={path === "/messages"} sx={{display:'flex', justifyContent:'center'}}>
         <ListItemIcon sx={{display:'flex', justifyContent:'center'}}>
             <MailIcon />
         </ListItemIcon>
