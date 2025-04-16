@@ -19,8 +19,8 @@ import * as yup from 'yup';
 // importing react-router for navigation (useParams)
 import { useNavigate, useParams } from 'react-router-dom'; // 'react-router' 
 
-// The Create Page Component:
-// - This component is responsible for creating a new listing
+// The Listing Page Component:
+// - This component is responsible for viewing a listing
 // - It fetches data from the backend via API calls and displays it in the GUI
 
 // To fetch the data:

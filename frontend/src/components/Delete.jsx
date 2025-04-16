@@ -11,8 +11,8 @@ import BasicCardForm from './forms/BasicCardForm'; // temporary card form for te
 // importing react-router for navigation
 import { useNavigate, useParams } from 'react-router-dom';
 
-// The Create Page Component:
-// - This component is responsible for creating a new listing
+// The Delete Page Component:
+// - This component is responsible for deleting a listing
 // - It fetches data from the backend via API calls and displays it in the GUI
 
 // To fetch the data:
