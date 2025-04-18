@@ -78,7 +78,6 @@ export default function Login () {
               // html input attribute
               type="password"
               placeholder="password"
-              {...register("password", { required: true })}
             />
             {errors.password && <span>{errors.password.message}</span>}
             </FormControl>
