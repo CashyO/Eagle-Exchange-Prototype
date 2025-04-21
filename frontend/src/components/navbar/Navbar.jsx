@@ -37,9 +37,9 @@ export default function Navbar({content}) {
             <IconButton onClick={changeMenu} sx={{marginRight:'30px', color: 'white'}}>
                {isBigMenu ? <MenuOpenIcon/> : <MenuIcon/>}
             </IconButton>
-            <img  width="10%"  src={logo}/> {/*add a logo when you find one */}
-            <Typography variant="h6" noWrap component="div">
-                - Eagle Exchange 
+            <img src={logo} style={{ width: '190px', height: 'auto' }} /> {/*add a logo when you find one */}
+            <Typography variant="h6" noWrap component="div" sx={{ color: 'white', marginLeft: 1, fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif', fontWeight: 'bold', fontSize: '20px', lineHeight: 1.5, letterSpacing: '0.00938em' }}>
+            Eagle Exchange 
             </Typography>
         </Toolbar>
       </AppBar>
