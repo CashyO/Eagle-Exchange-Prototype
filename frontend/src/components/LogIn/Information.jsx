@@ -95,6 +95,7 @@ export default function Info() {
             {errors.email && <span>{errors.email.message}</span>}
           </FormControl>
           
+          
           <FormControl>
             <FormLabel>First Name</FormLabel>
             <Input
