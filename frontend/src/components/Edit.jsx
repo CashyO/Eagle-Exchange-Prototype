@@ -17,10 +17,10 @@ import BasicCardForm from './forms/BasicCardForm'; // temporary card form for te
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 // importing react-router for navigation (useParams)
-import { useNavigate, useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router-dom';
 
-// The Create Page Component:
-// - This component is responsible for creating a new listing
+// The Edit Page Component:
+// - This component is responsible for editing a listing
 // - It fetches data from the backend via API calls and displays it in the GUI
 
 // To fetch the data:
