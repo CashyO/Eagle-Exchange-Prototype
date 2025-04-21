@@ -50,9 +50,9 @@ export default function Profile() {
           <FormControl>
             <Input
               // html input attribute
-              name="First Name"
-              type="First Name"
-              placeholder="First Name"
+              name="Fisrt Name"
+              type="Fisrt Name"
+              placeholder="Fisrt Name"
             />
           </FormControl>
           <FormControl>
@@ -67,9 +67,9 @@ export default function Profile() {
             <FormLabel>Password</FormLabel>
             <Input
               // html input attribute
-              name="Password"
-              type="Password"
-              placeholder="Password"
+              name="password"
+              type="password"
+              placeholder="password"
             />
           </FormControl>
             <Button sx={{ mt: 3 }} onClick={() => navigate("/")}>Update</Button>

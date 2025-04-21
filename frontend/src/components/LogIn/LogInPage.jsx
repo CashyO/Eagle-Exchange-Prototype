@@ -78,6 +78,7 @@ export default function Login () {
               // html input attribute
               type="password"
               placeholder="password"
+              {...register("password", { required: true })}
             />
             {errors.password && <span>{errors.password.message}</span>}
             </FormControl>
@@ -88,7 +89,7 @@ export default function Login () {
             <Typography
               endDecorator={<Link href="/verification">Sign up</Link>}
               sx={{ fontSize: 'sm', alignSelf: 'center' }}>
-              Don't have an account?
+              Don&apos;t have an account?
             </Typography>
 
       </form>
