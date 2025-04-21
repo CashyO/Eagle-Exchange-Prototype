@@ -42,8 +42,8 @@ export default function MenuShort() {
         <ListItemIcon sx={{display:'flex', justifyContent:'center'}}>
             <MailIcon />
         </ListItemIcon>
+
     </ListItemButton>
-     
     </List>
 
     </>

@@ -15,5 +15,34 @@ const AxiosInstance = axios.create({
     }
 })
 
+//These axios verify that we have a valid token
+AxiosInstance.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem('token')
+        //if the token is not null, add it to the header
+        if(token){
+            config.headers.Authorization = `token ${token}`
+        }
+        else{
+            config.headers.Authorization = ``
+        }
+        return config;
+    },
+)
+AxiosInstance.interceptors.response.use(
+    (response) => {
+        return response
+    }, 
+    (error) => {
+        if(error.response && error.response.status === 401){
+            //if the token is expired or not valid, we need to remove it
+            localStorage.removeItem('token')
+            window.location.href = '/login'
+        }
+
+    }
+)
+
+
 
 export default AxiosInstance;

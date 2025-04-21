@@ -27,6 +27,8 @@ export default function Info() {
       const emailFromState = location.state?.email;
       if (emailFromState) {
         setEmail(emailFromState);
+        setValue("email", emailFromState); // Explicitly set form value
+
       } else {
         console.log("No email found in state.");
       }
@@ -37,6 +39,7 @@ export default function Info() {
       register,
       handleSubmit,
       formState: { errors },
+      setValue,
     } = useForm();
 
     const onSubmit = async (data) => {
@@ -51,7 +54,7 @@ export default function Info() {
           password: data.password,
         });
         console.log("Server response:", response.data);
-        navigate(`/`)
+        navigate(`/login`)
 
       } catch (error) {
         console.error("Submission error:", error.response?.data || error.message);
@@ -70,20 +73,16 @@ export default function Info() {
               <b>Profile Information</b>
             </Typography>
           </div>
-
-       
+      
           <FormControl>
             <FormLabel>Email</FormLabel>
             <Input
               type="email"
               placeholder="email"
-              value={email} // Set the email value
-              {...register("email", {required: true})}
-              readOnly // Make the email field read-only since it's pre-filled
+              readOnly// Make the email field read-only since it's pre-filled
+              {...register("email", { required: true })}
             />
-            {errors.email && <span>This email is already assigned to an user, sign-up with a different email</span>}
           </FormControl>
-          
           
           <FormControl>
             <FormLabel>First Name</FormLabel>

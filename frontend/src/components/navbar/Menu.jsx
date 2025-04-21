@@ -113,23 +113,12 @@ export default function Menu() {
 
     {/*The Category Title: The DMs*/}
     <List
+
       sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
       component="nav"
       aria-labelledby="nested-list-subheader"
       subheader={
-      <ListSubheader component="div" id="nested-list-subheader">
-          The DMs
-      </ListSubheader>
-      }
-      >
 
-      {/*Chat Button*/}
-      <ListItemButton sx={{ pl: 4 }} component={Link} to="/messages" selected={path === "/messages"}>
-          <ListItemIcon>
-              <MailIcon />
-          </ListItemIcon>
-          <ListItemText primary="Chat" />
-      </ListItemButton>
     </List>
 
     </>

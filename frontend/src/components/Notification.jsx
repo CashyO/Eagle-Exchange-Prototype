@@ -46,14 +46,13 @@ export default function AccordionFilter() {
       }}
     >
 
-      {/*Notifications*/}
       <Accordion>
         <AccordionSummary>
           <Avatar color="success">
             <EditNotificationsRoundedIcon />
           </Avatar>
           <ListItemContent>
-            <Typography level="title-md">Notifications</Typography>
+            <Typography level="title-md">Email Notifications</Typography>
             <Typography level="body-sm">
               Enable or disable your notifications
             </Typography>
@@ -61,55 +60,14 @@ export default function AccordionFilter() {
         </AccordionSummary>
         <AccordionDetails>
           <Stack spacing={1.5}>
-            <FormControl orientation="horizontal" sx={{ gap: 1 }}>
-              <EmailRoundedIcon fontSize="xl2" sx={{ mx: 1 }} />
-              <FormLabel>E-mail</FormLabel>
-              <Switch size="sm" />
-            </FormControl>
+            
 
             <FormControl orientation="horizontal" sx={{ gap: 1 }}>
               <MessageRoundedIcon fontSize="xl2" sx={{ mx: 1 }} />
-              <FormLabel>Messages</FormLabel>
+              <FormLabel>Listing Messages</FormLabel>
               <Switch size="sm" />
             </FormControl>
 
-            
-          </Stack>
-        </AccordionDetails>
-      </Accordion>
-      {/*Accessibilty*/}
-      {/*}
-      <Accordion>
-        <AccordionSummary>
-          <Avatar color="danger">
-            <AccessibilityNewRoundedIcon />
-          </Avatar>
-          <ListItemContent>
-            <Typography level="title-md">Accessibility</Typography>
-            <Typography level="body-sm">
-              Toggle your accessibility settings
-            </Typography>
-          </ListItemContent>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Stack spacing={1.5}>
-            <FormControl orientation="horizontal" sx={{ gap: 1 }}>
-              <ZoomInRoundedIcon fontSize="xl2" sx={{ mx: 1 }} />
-              <FormLabel>Zoom</FormLabel>
-              <Switch size="sm" />
-            </FormControl>
-
-            <FormControl orientation="horizontal" sx={{ gap: 1 }}>
-              <SpatialTrackingRoundedIcon fontSize="xl2" sx={{ mx: 1 }} />
-              <FormLabel>Audio Descriptions</FormLabel>
-              <Switch size="sm" />
-            </FormControl>
-
-            <FormControl orientation="horizontal" sx={{ gap: 1 }}>
-              <SettingsVoiceRoundedIcon fontSize="xl2" sx={{ mx: 1 }} />
-              <FormLabel>Voice Control</FormLabel>
-              <Switch size="sm" />
-            </FormControl>
           </Stack>
         </AccordionDetails>
       </Accordion>
