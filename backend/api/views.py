@@ -34,19 +34,6 @@ class RegisterViewset(viewsets.ViewSet):
         return Response(serializer.data)
 
 
-class UserViewset(viewsets.ViewSet):
-    permission_classes = [permissions.AllowAny]
-    queryset = User.objects.all()
-    serializer_class = RegisterSerializer
-
-    def list(self,request):
-        queryset = User.objects.all()
-        serializer = self.serializer_class(queryset, many=True)
-        return Response(serializer.data)
-
-
-
-
 # View VerificationEmailViewset is used to verify email
 def validateEmail(email):
     #Make sure the email is and ERAU email

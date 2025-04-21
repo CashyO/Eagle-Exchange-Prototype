@@ -40,7 +40,6 @@ export default function Info() {
       handleSubmit,
       formState: { errors },
       setValue,
-      setError,
     } = useForm();
 
     const onSubmit = async (data) => {
@@ -59,14 +58,6 @@ export default function Info() {
 
       } catch (error) {
         console.error("Submission error:", error.response?.data || error.message);
-        const errorData = error.response?.data;
-        const status = error.response?.status;
-        if ((errorData?.email) || (status === 400)) {
-          setError("email", {
-            type: "manual",
-            message: "user with this email already exists.", // shows the error under the email input
-          });
-        }
       }
     };
 
@@ -82,8 +73,7 @@ export default function Info() {
               <b>Profile Information</b>
             </Typography>
           </div>
-
-       
+      
           <FormControl>
             <FormLabel>Email</FormLabel>
             <Input
@@ -92,7 +82,6 @@ export default function Info() {
               readOnly// Make the email field read-only since it's pre-filled
               {...register("email", { required: true })}
             />
-            {errors.email && <span>{errors.email.message}</span>}
           </FormControl>
           
           <FormControl>
@@ -126,7 +115,7 @@ export default function Info() {
           </FormControl>
 
             <Button sx={{ mt: 1 }} type={"submit"}>
-                Create Account And Go To Log In
+                Create Account
             </Button>
         </form>
     </>
