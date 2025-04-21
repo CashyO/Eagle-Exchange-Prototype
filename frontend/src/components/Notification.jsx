@@ -45,6 +45,7 @@ export default function AccordionFilter() {
         },
       }}
     >
+
       <Accordion>
         <AccordionSummary>
           <Avatar color="success">
@@ -60,6 +61,7 @@ export default function AccordionFilter() {
         <AccordionDetails>
           <Stack spacing={1.5}>
             
+
             <FormControl orientation="horizontal" sx={{ gap: 1 }}>
               <MessageRoundedIcon fontSize="xl2" sx={{ mx: 1 }} />
               <FormLabel>Listing Messages</FormLabel>
@@ -69,6 +71,7 @@ export default function AccordionFilter() {
           </Stack>
         </AccordionDetails>
       </Accordion>
+      */}
     </AccordionGroup>
   );
 }
