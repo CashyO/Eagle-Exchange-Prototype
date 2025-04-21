@@ -9,10 +9,10 @@ import MyMessage from './forms/Message'; // temporary message form for testing
 import UploadForm from './forms/UploadForm'; // temporary upload form for testing 
 import BasicCardForm from './forms/BasicCardForm'; // temporary card form for testing
 // importing react-router for navigation
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router';
 
-// The Delete Page Component:
-// - This component is responsible for deleting a listing
+// The Create Page Component:
+// - This component is responsible for creating a new listing
 // - It fetches data from the backend via API calls and displays it in the GUI
 
 // To fetch the data:

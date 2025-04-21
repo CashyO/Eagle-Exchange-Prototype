@@ -17,7 +17,7 @@ import BasicCardForm from './forms/BasicCardForm'; // temporary card form for te
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 // importing react-router for navigation
-import { useNavigate } from 'react-router'; // 'react-router-dom' 
+import { useNavigate } from 'react-router';
 
 // The Create Page Component:
 // - This component is responsible for creating a new listing
