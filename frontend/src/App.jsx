@@ -80,18 +80,11 @@ function App() {
         </Routes>
       }
     />
-  );
-
-  // Render the appropriate routes based on the current path
-  return (
-    <>
-      {location.pathname.startsWith('/verification') ||
-      location.pathname.startsWith('/login') ||
-      location.pathname.startsWith('/information')
-        ? loginRoutes
-        : navbarRoutes}
     </>
   );
+
+ 
+}
 }
 
 export default App;
