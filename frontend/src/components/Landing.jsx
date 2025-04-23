@@ -11,7 +11,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import {MaterialReactTable} from 'material-react-table';
 // Fetching Data APIs Axios
 import AxiosInstance from './AxiosInstance';
-import Listing from './Listing';
+
 
 // JavaScript Function 
 const Landing = () => {
@@ -99,11 +99,7 @@ const Landing = () => {
           <Box sx={{display: 'flex', flexWrap: 'nowrap', gap: '8px'}}>
             {/*Don't forget the "/" before the parameterized urls because
              that is how it is declared in the app.jsx*/}
-            {/*Going to delete the buttons: edit & delete
-                add a inspect button (create another parameterized page but just to view the specific listing) 
-                                     (basically copy and paste edit.jsx but take away the functionality)
-                add a message button (message other dude is going to do this) */}
-            <IconButton color="primary" component={Link} to={`/listing/${row.original.id}`}>
+            <IconButton color="primary" component={Link} to={`/listing/${row.original.id}`}> 
               <InfoIcon/>
             </IconButton>
 

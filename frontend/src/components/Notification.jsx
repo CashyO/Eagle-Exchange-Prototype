@@ -45,41 +45,8 @@ export default function AccordionFilter() {
         },
       }}
     >
-      <Accordion>
-        <AccordionSummary>
-          <Avatar color="primary">
-            <TapAndPlayRoundedIcon />
-          </Avatar>
-          <ListItemContent>
-            <Typography level="title-md">Connections</Typography>
-            <Typography level="body-sm">
-              Activate or deactivate your connections
-            </Typography>
-          </ListItemContent>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Stack spacing={1.5}>
-            <FormControl orientation="horizontal" sx={{ gap: 1 }}>
-              <AirplanemodeActiveRoundedIcon fontSize="xl2" sx={{ mx: 1 }} />
-              <FormLabel>Airplane Mode</FormLabel>
-              <Switch size="sm" />
-            </FormControl>
 
-            <FormControl orientation="horizontal" sx={{ gap: 1 }}>
-              <WifiRoundedIcon fontSize="xl2" sx={{ mx: 1 }} />
-              <FormLabel>Wi-Fi</FormLabel>
-              <Switch size="sm" />
-            </FormControl>
-
-            <FormControl orientation="horizontal" sx={{ gap: 1 }}>
-              <BluetoothRoundedIcon fontSize="xl2" sx={{ mx: 1 }} />
-              <FormLabel>Bluetooth</FormLabel>
-              <Switch size="sm" />
-            </FormControl>
-          </Stack>
-        </AccordionDetails>
-      </Accordion>
-
+      {/*Notifications*/}
       <Accordion>
         <AccordionSummary>
           <Avatar color="success">
@@ -110,7 +77,8 @@ export default function AccordionFilter() {
           </Stack>
         </AccordionDetails>
       </Accordion>
-
+      {/*Accessibilty*/}
+      {/*}
       <Accordion>
         <AccordionSummary>
           <Avatar color="danger">
@@ -145,6 +113,7 @@ export default function AccordionFilter() {
           </Stack>
         </AccordionDetails>
       </Accordion>
+      */}
     </AccordionGroup>
   );
 }

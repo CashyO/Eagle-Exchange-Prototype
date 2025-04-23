@@ -15,7 +15,7 @@ import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import {Link, useLocation} from 'react-router'
+import {Link, useLocation} from 'react-router-dom'
 
 
 export default function Menu() {
@@ -32,7 +32,7 @@ export default function Menu() {
   return (
     <>
     
-    {/*The Menu Title*/}
+    {/*The Category Title: The Exchange*/}
     <List
       sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
       component="nav"
@@ -43,33 +43,16 @@ export default function Menu() {
         </ListSubheader>
       }
     >
-     
-    {/*Navigation Drop Down Button*/}
-      <ListItemButton sx={{ pl: 4 }} onClick={handleClick} >
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-        <ListItemText primary="Navigation" />
-        {open ? <ExpandLess /> : <ExpandMore />}
+      {/*Landing Page Button*/}
+      <ListItemButton sx={{ pl: 4 }}  component={Link} to="/" selected={path === "/"}>
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+        <ListItemText primary="Landing" />
       </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-
-              {/*Landing Page*/}
-          <ListItemButton sx={{ pl: 4 }}  component={Link} to="/" selected={path === "/"}>
-              <ListItemIcon>
-                <DashboardCustomizeIcon />
-              </ListItemIcon>
-            <ListItemText primary="Landing" />
-          </ListItemButton>
-
-        </List>
-      </Collapse>
     </List>
 
-
-    
-    {/*The Menu Title*/}
+    {/*The Category Title: Dashboard*/}
     <List
       sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
       component="nav"
@@ -91,7 +74,7 @@ export default function Menu() {
           <Collapse in={open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
 
-                  {/*Dashboard*/}
+                  {/*Profile Button*/}
                   <ListItemButton sx={{ pl: 4 }}  component={Link} to="/dashboard" selected={path === "/dashboard"}>
                       <ListItemIcon>
                         <AccountCircleIcon />
@@ -99,7 +82,7 @@ export default function Menu() {
                     <ListItemText primary="Profile" />
                   </ListItemButton>
 
-                  {/*Create Listing*/}
+                  {/*Create Listing Button*/}
                   <ListItemButton sx={{ pl: 4 }}  component={Link} to="/create" selected={path === "/create"}>
                       <ListItemIcon>
                         <DashboardCustomizeIcon />
@@ -108,7 +91,7 @@ export default function Menu() {
                   </ListItemButton>
 
 
-                  {/*My Listing*/}
+                  {/*My Listing Button*/}
                   <ListItemButton sx={{ pl: 4 }}  component={Link} to="/userlistings" selected={path === "/userlisting"}>
                       <ListItemIcon>
                         <CalendarViewMonthIcon />
@@ -116,7 +99,7 @@ export default function Menu() {
                     <ListItemText primary="My Listings" />
                   </ListItemButton>
 
-                  {/*Notifications*/}
+                  {/*Notifications Button*/}
                   <ListItemButton sx={{ pl: 4 }}  component={Link} to="/notification" selected={path === "/notification"}>
                       <ListItemIcon>
                         <CircleNotificationsIcon />
@@ -128,25 +111,25 @@ export default function Menu() {
           </Collapse>
     </List> 
 
+    {/*The Category Title: The DMs*/}
     <List
-    sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
-    component="nav"
-    aria-labelledby="nested-list-subheader"
-    subheader={
-    <ListSubheader component="div" id="nested-list-subheader">
-        The DMs
-    </ListSubheader>
-    }
-    >
+      sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+      component="nav"
+      aria-labelledby="nested-list-subheader"
+      subheader={
+      <ListSubheader component="div" id="nested-list-subheader">
+          The DMs
+      </ListSubheader>
+      }
+      >
 
-    {/*Chat Button*/}
-    <ListItemButton sx={{ pl: 4 }} component={Link} to="/messages" selected={path === "/messages"}>
-        <ListItemIcon>
-            <MailIcon />
-        </ListItemIcon>
-        <ListItemText primary="Chat" />
-    </ListItemButton>
-    
+      {/*Chat Button*/}
+      <ListItemButton sx={{ pl: 4 }} component={Link} to="/messages" selected={path === "/messages"}>
+          <ListItemIcon>
+              <MailIcon />
+          </ListItemIcon>
+          <ListItemText primary="Chat" />
+      </ListItemButton>
     </List>
 
     </>

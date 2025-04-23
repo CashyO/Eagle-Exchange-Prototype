@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 import { Routes, Route, useLocation } from 'react-router-dom'
 import './App.css'
 import ProtectedRoute from './components/ProtectedRoutes'
@@ -23,11 +24,16 @@ import LogInPage from './components/LogIn/LogInPage'
 import Verification from './components/LogIn/Verification'
 import Information from './components/LogIn/Information'
 
-
-// Designing the App features
+/*
+  To make the code cleaner and more readable,
+  I changed the format of the if else statement to a ternary opertator.
+  - The ternary operator is a shorthand way of writing an if-else statement.
+  Now the parameterized URLs can function properly.
+*/
 
 function App() {
   const location = useLocation();
+
 
   if (location.pathname === "/" 
     ||location.pathname === '/dashboard' 
@@ -72,14 +78,20 @@ function App() {
           <Route path="/login" element={<LogInPage />} />
           <Route path="/information" element={<Information />} />
         </Routes>
-      }/>
-      </>
-    )    
-  }
+      }
+    />
+  );
 
-  
+  // Render the appropriate routes based on the current path
+  return (
+    <>
+      {location.pathname.startsWith('/verification') ||
+      location.pathname.startsWith('/login') ||
+      location.pathname.startsWith('/information')
+        ? loginRoutes
+        : navbarRoutes}
+    </>
+  );
 }
 
-
-
-export default App
+export default App;
