@@ -190,7 +190,7 @@ const Edit = () => {
                     {/*Change: Going to combine the 2 boxes into the Basic Card Form file */}
                     <Box >
                         <SelectForm
-                            label={"Exchange Type"} 
+                            label={"Communication Preference"} 
                             options={contactType}
                             name='contactType'
                             value={formik.values.contactType}
