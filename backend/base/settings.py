@@ -173,6 +173,6 @@ DEFAULT_FROM_EMAIL = 'eagleexchange03@gmail.com'  # Your email
 
 
 REST_KNOX = {
-    'TOKEN_TTL': timedelta(minutes=1),  # Set your desired expiration time
+    'TOKEN_TTL': timedelta(minutes=10),  # Set your desired expiration time
     'AUTO_REFRESH': False,  # Whether tokens should auto-refresh when near expiration
 }

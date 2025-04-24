@@ -38,6 +38,7 @@ import { useNavigate } from 'react-router'; // 'react-router-dom'
 const Create = () => {
     // 2. Define state variables to store data fetched from the API
     const [priceType, setPriceType] = useState([])
+    const [contactType, setContactType] = useState([])
     const [characteristic, setCharacteristic] = useState([])
     // To notify the user of succesful upload to database
     const [message, setMessage] = useState([])
@@ -47,6 +48,7 @@ const Create = () => {
         // Check that the data is being fetched correctly
     console.log('Price Type', priceType)
     console.log('Characteristic', characteristic)
+    console.log('Contact Type', contactType)
     
     // 1. Define a constant variable to get the data from the API endpoint
 
@@ -55,6 +57,11 @@ const Create = () => {
             AxiosInstance.get(`priceType/`).then((res) =>
             {
                 setPriceType(res.data)
+            })
+
+            AxiosInstance.get(`contactType/`).then((res) =>
+            {
+                setContactType(res.data)
             })
 
             AxiosInstance.get(`characteristic/`).then((res) =>
@@ -91,6 +98,13 @@ const Create = () => {
         characteristic: yup
             .array()
             .min(1, "Select at least one tag"),
+        // contactType: yup
+        contactType: yup
+            .string()
+            .required("Contact Type is required"),
+        contactName: yup
+            .string()
+            .required("Enter a contact information"),
     })
     
     
@@ -104,6 +118,8 @@ const Create = () => {
             price: 0.00,
             priceType: "",
             characteristic: [],
+            contactType: "",
+            contactName: "",
         },
         validationSchema: validationSchema, 
 
@@ -160,7 +176,32 @@ const Create = () => {
                 {/* Column 1: Tempoary until image column in model.py class is figured out */}
                 <Box className={"FormArea"}>
                     {/*Change: Going to combine the 2 boxes into the Basic Card Form file */}
-                 
+                    <Box >
+                        <SelectForm
+                            label={"Exchange Type"} 
+                            options={contactType}
+                            name='contactType'
+                            value={formik.values.contactType}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            error={formik.touched.contactType && Boolean(formik.errors.contactType)}
+                            helperText={formik.touched.contactType && formik.errors.contactType}
+                        />
+                    </Box>
+
+                    <Box sx={{ marginTop: '16px' }}>
+                    <TextForm 
+                        
+                        label={"Contact Information"}
+                        name='contactName'
+                        value={formik.values.contactName}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        error={formik.touched.contactName && Boolean(formik.errors.contactName)}
+                        helperText={formik.touched.contactName && formik.errors.contactName} 
+                    />
+                    </Box>
+
                     {/**/}
                     <Box sx={{ marginTop: '16px', display: 'flex', justifyContent: 'center' }}>
                     <Button type="submit" variant="contained" fullWidth color="primary">

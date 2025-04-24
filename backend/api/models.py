@@ -59,7 +59,7 @@ class Characteristic(models.Model):
     def __str__(self):
         return self.name
     
-    # League Table 
+    # Price Type Table 
 class PriceType(models.Model):
     # Columns of the Table
     name = models.CharField(unique=True, max_length=100)
@@ -67,10 +67,21 @@ class PriceType(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     
-        # It will show the name of the country in the admin panel
+        # It will show the name of the price type in the admin panel
     def __str__(self):
         return self.name
     
+    # Contact Type Table
+class ContactType(models.Model):
+    # Columns of the Table
+    name = models.CharField(unique=True, max_length=100)
+        # It will list everytime when we create a new record
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+        # It will show the name of the contact type in the admin panel
+    def __str__(self):
+        return self.name
+
     # Creating Fact Table that will have the Foreign Keys of Dimensional Tables
 class UserListing(models.Model):
     # Columns of the Table
@@ -85,6 +96,9 @@ class UserListing(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
         # New field for the image 
+        # Foreign Keys  - giving access to the dimensional tables 
+    contactType = models.ForeignKey(ContactType, on_delete=models.CASCADE, null=True, blank=True)
+    contactName = models.CharField(max_length=100, null=True, blank=True)
     
     def __str__(self):
         return self.name

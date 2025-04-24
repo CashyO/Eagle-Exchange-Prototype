@@ -44,6 +44,8 @@ const Delete = () => {
         price: 0.00,
         description: '',
         characteristic: [],   
+        contactType: '',
+        contactName: '',
     })
     console.log("My Data", myData)
     // To navigate to another web page

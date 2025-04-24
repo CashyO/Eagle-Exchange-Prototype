@@ -64,6 +64,10 @@ const UserListings = () => {
         }
       },
       {
+        accessorKey: 'contactType_details.name',
+        header: 'Contact Type',
+      },
+      {
         accessorKey: 'characteristics_names',
         header: 'Characteristics',
         Cell: ({cell}) =>(
