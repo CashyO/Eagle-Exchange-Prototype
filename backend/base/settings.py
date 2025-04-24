@@ -65,11 +65,12 @@ CORS_ALLOWED_ORIGINS = [
     # Troubleshooting (because of the port number may change)
     
 ]
+
 CSRF_TRUSTED_ORIGINS = ['http://localhost:5173']  # Added CSRF trusted origins
 
 # Session settings
 SESSION_COOKIE_SAMESITE = 'None'  # Set to 'None' if test from frontend, set to 'Lax' if test from backend
-SESSION_COOKIE_SECURE = True # Set to True if test fromfrontend, set to False if test frombackend
+SESSION_COOKIE_SECURE = True # Set to True if test from frontend, set to False if test frombackend
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_COOKIE_AGE = 3600
 SESSION_SAVE_EVERY_REQUEST = True  # Added to save session on each request
@@ -173,6 +174,6 @@ DEFAULT_FROM_EMAIL = 'eagleexchange03@gmail.com'  # Your email
 
 
 REST_KNOX = {
-    'TOKEN_TTL': timedelta(minutes=1),  # Set your desired expiration time
+    'TOKEN_TTL': timedelta(hours=2),  # Set your desired expiration time
     'AUTO_REFRESH': False,  # Whether tokens should auto-refresh when near expiration
 }

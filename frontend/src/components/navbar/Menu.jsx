@@ -75,7 +75,7 @@ export default function Menu() {
             <List component="div" disablePadding>
 
                   {/*Profile Button*/}
-                  <ListItemButton sx={{ pl: 4 }}  component={Link} to="/dashboard" selected={path === "/dashboard"}>
+                  <ListItemButton sx={{ pl: 4 }}  component={Link} to="/profile" selected={path === "/profile"}>
                       <ListItemIcon>
                         <AccountCircleIcon />
                       </ListItemIcon>
