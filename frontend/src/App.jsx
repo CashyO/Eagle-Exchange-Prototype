@@ -33,58 +33,64 @@ import Information from './components/LogIn/Information'
 
 function App() {
   const location = useLocation();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // Define routes that require the Navbar
+  const navbarRoutes = [
+    '/',
+    '/dashboard',
+    '/messages',
+    '/profile',
+    '/notification',
+    '/favorites',
+    '/create',
+    '/userlistings',
+  ];
 
-  if (location.pathname === "/" 
-    ||location.pathname === '/dashboard' 
-    ||location.pathname === '/messages' 
-    ||location.pathname === '/profile' 
-    ||location.pathname === '/notification' 
-    ||location.pathname === '/favorites' 
-    ||location.pathname === '/create' 
-    ||location.pathname === '/edit/:id' 
-    ||location.pathname === '/delete/:id'
-    ||location.pathname === '/listing/:id'
-    ||location.pathname === '/userlistings') {
+  // Check if the current path matches any of the navbar routes or parameterized routes
+  const isNavbarRoute =
+    navbarRoutes.includes(location.pathname) ||
+    /^\/(edit|delete|listing)\/[^/]+$/.test(location.pathname); // Matches /edit/:id, /delete/:id, /listing/:id
+
+  if (isNavbarRoute) {
     return (
       <>
         <Navbar
           content={
             <Routes>
-              <Route element={<ProtectedRoute/>}>
-               <Route path="" element={<Landing />} />
+              <Route element={<ProtectedRoute />}>
+                <Route path="/" element={<Landing />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/favorites" element={<Favorites />} />
+                <Route path='/userlistings' element={<UserListings />} />
                 <Route path="/create" element={<Create />} />
                 <Route path="/edit/:id" element={<Edit />} />
                 <Route path="/delete/:id" element={<Delete />} />
-                <Route path='/notification' element={<Notification />} />
-                <Route path='/profile' element={<Profile />} />
-                <Route path='/messages' element={<Messages />} />
+                <Route path="/listing/:id" element={<Listing />} />
+                <Route path="/notification" element={<Notification />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/messages" element={<Messages />} />
               </Route>
             </Routes>
           }
-        />  
-         
+        />
       </>
-    )    
-  }
-  else if (location.pathname === "/verification" ||location.pathname === '/login' || location.pathname === "/newaccount" || location.pathname === "/information"){
+    );
+  } else {
     return (
-      <>  
-      <TemplateLogIn content ={
-        <Routes>
-          <Route path="/verification" element={<Verification />} />
-          <Route path="/login" element={<LogInPage />} />
-          <Route path="/information" element={<Information />} />
-        </Routes>
-      }
-    />
-    </>
-  );
-
- 
-}
+      <>
+        <TemplateLogIn
+          content={
+            <Routes>
+              <Route path="/verification" element={<Verification />} />
+              <Route path="/login" element={<LogInPage />} />
+              <Route path="/information" element={<Information />} />
+            </Routes>
+          }
+        />
+      </>
+    );
+  }
 }
 
 export default App;

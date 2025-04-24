@@ -42,6 +42,7 @@ const Edit = () => {
 
     // 2. Define state variables to store data fetched from the API
     const [priceType, setPriceType] = useState([])
+    const [contactType, setContactType] = useState([])
     const [characteristic, setCharacteristic] = useState([])
     // To notify the user of succesful upload to database
     const [message, setMessage] = useState([])
@@ -52,6 +53,8 @@ const Edit = () => {
         price: 0.00,
         priceType: "",
         characteristic: [],
+        contactType: "",
+        contactName: "",
     })
     // Check that the data is being fetched correctly
     console.log("My data", myData)
@@ -65,6 +68,11 @@ const Edit = () => {
             AxiosInstance.get(`priceType/`).then((res) =>
                 {
                     setPriceType(res.data)
+                })
+
+            AxiosInstance.get(`contactType/`).then((res) => 
+                {
+                    setContactType(res.data)
                 })
 
             AxiosInstance.get(`characteristic/`).then((res) =>
@@ -105,6 +113,12 @@ const Edit = () => {
         characteristic: yup
             .array()
             .min(1, "Select at least one tag"),
+        contactType: yup
+            .string()
+            .required("Contact Type is required"),
+        contactName: yup
+            .string()
+            .required("Enter a contact information"),
     })
     
     // Formik Constant to handle form submission and validation (has to exactly same as the columns in the db table)
@@ -115,6 +129,8 @@ const Edit = () => {
             price: myData.price,
             priceType: myData.priceType,
             characteristic: myData.characteristic,
+            contactType: myData.contactType,
+            contactName: myData.contactName,
         },
         enableReinitialize: true,
         validationSchema: validationSchema, 
@@ -172,7 +188,33 @@ const Edit = () => {
                 {/* Column 1: Tempoary until image column in model.py class is figured out */}
                 <Box className={"FormArea"}>
                     {/*Change: Going to combine the 2 boxes into the Basic Card Form file */}
-                 
+
+                    <Box >
+                        <SelectForm
+                            label={"Communication Preference"} 
+                            options={contactType}
+                            name='contactType'
+                            value={formik.values.contactType}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            error={formik.touched.contactType && Boolean(formik.errors.contactType)}
+                            helperText={formik.touched.contactType && formik.errors.contactType}
+                        />
+                    </Box>
+
+                    <Box sx={{ marginTop: '16px' }}>
+                        <TextForm 
+                            
+                            label={"Contact Information"}
+                            name='contactName'
+                            value={formik.values.contactName}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            error={formik.touched.contactName && Boolean(formik.errors.contactName)}
+                            helperText={formik.touched.contactName && formik.errors.contactName} 
+                        />
+                    </Box>
+                    
                     {/**/}
                     <Box sx={{ marginTop: '16px', display: 'flex', justifyContent: 'center' }}>
                     <Button type="submit" variant="contained" fullWidth color="primary">

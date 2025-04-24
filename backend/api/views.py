@@ -151,6 +151,17 @@ class PriceTypeViewSet(viewsets.ModelViewSet):
         serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data)
     
+# Create a viewset for the ContactType model 
+class ContactTypeViewSet(viewsets.ModelViewSet):
+    permissions_classes = [permissions.AllowAny]
+    queryset = ContactType.objects.all()
+    serializer_class = ContactTypeSerializer
+
+    def list(self, request):
+        queryset = ContactType.objects.all()
+        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data)
+    
 # Create a viewset for the Characteristic model
 class CharacteristicViewSets(viewsets.ModelViewSet):
     # Define the permission classes for the viewset (who can access it)

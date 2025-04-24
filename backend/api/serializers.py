@@ -37,6 +37,12 @@ class PriceTypeSerializer(serializers.ModelSerializer):
         model = PriceType
         fields = ('id', 'name')
 
+# contact type
+class ContactTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactType
+        fields = ('id', 'name')
+
 class CharacteristicSerializer(serializers.ModelSerializer):
     class Meta:
         model = Characteristic
@@ -46,6 +52,7 @@ class UserListingSerializer(serializers.ModelSerializer):
 
     # Foreign Key Id - to pull the titles of the Id
     priceType_details = PriceTypeSerializer(source='priceType', read_only=True)
+    contactType_details = ContactTypeSerializer(source='contactType', read_only=True)
     characteristics_names = serializers.SerializerMethodField()
 
     class Meta:
